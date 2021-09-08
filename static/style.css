@@ -1,0 +1,114 @@
+@import "https://fonts.googleapis.com/css?family=Roboto|Roboto Condensed|Roboto Mono|Fira Sans|Nunito|Didact Gothic";
+:root {
+    --auto-white: #fdfcfa;
+    --auto-ivory-white: #e8ebe0;
+    --auto-dark-blue: #236B8E;
+    --auto-blue: #33A1DE;
+    --auto-red: #da313f;
+    --auto-yellow: #f0e130;
+    --auto-dark: #c7c7c7;
+    --auto-black: #2b2b2b;
+}
+
+body {
+    font-size: nunito;
+}
+
+.main-bg {
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .9)), url(https://images.unsplash.com/photo-1484320775925-2609d111d8b3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWVyb3BsYW5lc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60);
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    background-position: fixed;
+    background-size: cover;
+    position: fixed;
+    z-index: -1;
+}
+
+.login-column {
+    width: 100%;
+    padding:  30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.login-mod {
+    display: block;
+    width: 70%;
+}
+
+.menu {
+    background: rgba(255, 255, 255, 0.911);
+    width: 100%;
+    padding: 30px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.048), 0 6px 20px 0 rgba(0, 0, 0, 0.247);
+    border-radius: 2px;
+}
+
+/* .menu-body {
+    padding-left: 15px;
+} */
+
+.menu-head {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    color: var(--auto-dark-blue);
+    font-family: nunito;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.menu-item {
+    border-left: transparent 4px solid;
+    padding: 10px 20px;
+    transition: .5s;
+    color: var(--auto-black);
+    font-family: nunito;
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+    transition: 0.5s;
+    border-bottom: rgba(29, 29, 29, 0.076) 1px solid;
+}
+
+.menu-item:hover {
+    border-left: var(--auto-blue) 4px solid;
+    background: rgb(220, 220, 220);
+    cursor: pointer;
+    text-decoration: none;
+    -webkit-box-shadow: -1px 0px 15px -6px rgba(0,0,0,0.36);
+    -moz-box-shadow: -1px 0px 15px -6px rgba(0,0,0,0.36);
+    box-shadow: -1px 0px 15px -6px rgba(0,0,0,0.36);
+}
+
+
+.main-head {
+    color: var(--auto-white);
+    font-family: nunito;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin: 15px 0;
+    text-transform: uppercase;
+    cursor: default;
+}
+
+.back-btn {
+    color: var(--auto-white);
+    margin-right: auto;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.back-btn:active,
+.back-btn:focus,
+.back-btn:hover {
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    color: var(--auto-blue);
+    transform: none;
+    outline: 0;
+}
