@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reliable Autos</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+    <div class="main-bg"></div>
+    <div class="container-fluid">
+        <a class="btn back-btn mr-auto" href="{{ url_for('viewFlightPage') }}">
+            <span><i class="fa fa-arrow-left"></i></span> Go Back
+        </a>
+        <div class="login-column">
+            <div class="login-mod">
+                <div class="main-head">
+                    Flight {{ flight.id }} Details
+                </div>
+                <div class="menu">
+                    <div class="menu-body px-5">
+                        
+                            <div class="p-0">
+                                <label for=""><small>Flight #</small></label>
+                                <h5 class="text-muted">{{ flight.id }}</h5>
+                            </div>
+
+                            <hr>
+                            <h4 class="text-muted py-4">Flight Schedules  <a href="/flight/{{ flight.id }}/schedule" class="btn btn-sm btn-success">Add Schedule</a></h4>
+
+                            {% if isSchedule %}
+                                <table class="table table-sm table-responsive-md table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Schedule #</th>
+                                        <th scope="col">Departing</th>
+                                        <th scope="col">Arriving</th>
+                                        <th scope="col">Dept Time</th>
+                                        <th scope="col">Arr Time</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for schedule in schedules %}
+                                            <tr>
+                                                <th>{{schedule.id}}</th>
+                                                <td>
+                                                    <h6 class="text-muted">{{schedule.dept}}</h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="text-muted">{{schedule.arr}}</h6>
+                                                </td>
+                                                <td><small>{{ schedule.getTimes()['dept'] }}</small></td>
+                                                <td><small>{{ schedule.getTimes()['arr'] }}</small></td>
+                                                <td><a href="#" class="status">--</a></td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            {% else %}
+                                No Scheduled Flights
+                            {% endif %}
+                            <hr>
+                            <h4 class="text-muted py-4">Flight Details</h4>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="p-2">
+                                        <label><small>Flight Capacity</small></label>
+                                        <h5 class="text-muted">{{ flight.capacity }}</h5>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="p-2">
+                                        <label><small>Flight Crew Capacity</small></label>
+                                        <h5 class="text-muted">{{ flight.crew_cap }}</h5>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="p-2">
+                                        <label><small>Equip</small></label>
+                                        <h5 class="text-muted">{{ flight.equip }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if "Error" not in message %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close ml-3" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                {% if "Error" in message %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close ml-3" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
